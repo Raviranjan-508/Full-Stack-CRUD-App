@@ -1,11 +1,13 @@
 const express = require('express');
 const { connection } = require('./config/db');
-const { taskModel } = require('./Model/TaskModel');
 const { taskRouter } = require('./Routes/TaskRoute');
+const cors = require('cors');
+
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended:false }))
+app.use(cors());
 
 app.get("/", async (req, res) => {
     res.send("Hello from express")
